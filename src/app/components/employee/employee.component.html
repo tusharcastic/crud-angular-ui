@@ -1,0 +1,38 @@
+<div class="container my-5">
+    <h1 class="mb-3">Employees</h1>
+    <p *ngIf="employees.length==0 || employees==null">No employees are present </p>
+    <table class="table" *ngIf="employees.length > 0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Dept</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees let i = index">
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.phone}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.department}}</td>
+                <td class="flex-container">
+                    <div class = "btn-group">
+                        <button (click)="navigateToEditEmployee(emp, emp.id)" type="button" class="btn btn-primary"> edit </button>
+                        <button (click)="deleteEmployee(emp.id)" type="button" class="btn btn-danger">delete</button>
+                    </div>
+<!-- (click)="deleteEmployee(emp.id)" -->
+                    <!-- <div class="container"><a [routerLink]="['edit-employee', emp.id]">edit/delete</a></div> -->
+                    
+                    
+                </td> 
+                <!-- <a [routerLink]="['edit-employee', emp.id]">edit</a> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

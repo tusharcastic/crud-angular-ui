@@ -1,0 +1,30 @@
+<div class="container my-5">
+    <h1 class="mb-3">Edit employee</h1>
+    <form  (ngSubmit)="editEmployee()">
+        <div class="form-group my-3">
+            <label for="">ID</label>
+            <input type="text" class="form-control" id="id"  [(ngModel)]="editEmployeeRequest.id" name="id" readonly disabled>          
+          </div>
+        <div class="form-group my-3">
+          <label for="">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" [(ngModel)]="editEmployeeRequest.name" name="name">          
+        </div>
+        <div class="form-group my-3">
+            <label for="">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" [(ngModel)]="editEmployeeRequest.email" name="email">          
+        </div>
+        <div class="form-group my-3">
+            <label for="">Department</label>
+            <input type="text" class="form-control" id="department" placeholder="Enter Department" [(ngModel)]="editEmployeeRequest.department" name="department">          
+        </div>
+        <div class="form-group my-3">
+            <label for="">Salary</label>
+            <input type="number" class="form-control" id="salary" placeholder="Enter Salary" [(ngModel)]="editEmployeeRequest.salary" name="salary">          
+        </div>
+        <div class="form-group my-3">
+            <label for="">Phone No.</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter Phone No." [(ngModel)]="editEmployeeRequest.phone" name="phone">          
+        </div>    
+        <button type="submit" class="btn btn-primary">Save</button>        
+      </form>
+</div>
