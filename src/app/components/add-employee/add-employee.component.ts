@@ -41,12 +41,18 @@ export class AddEmployeeComponent implements OnInit{
   addEmployee(){    
     
     // console.log(this.profileForm.value);
-    this.addEmployeeRequest = new AddEmployee(this.profileForm.value);
-    this.employeeService.addEmployee(this.addEmployeeRequest)
+    //this.addEmployeeRequest = new AddEmployee(this.profileForm.value);
+
+    
+    //assigning FormGroup data to any object and passing it to the addEmployee service method
+    const o: any = {};
+    Object.assign(o, this.profileForm.value);
+    
+
+    this.employeeService.addEmployee(o)
     .subscribe((response) => {
       console.log(response);
       this.router.navigate(['']);
-
     })
     ;
 
