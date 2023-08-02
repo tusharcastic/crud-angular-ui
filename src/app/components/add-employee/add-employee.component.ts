@@ -15,14 +15,14 @@ export class AddEmployeeComponent implements OnInit{
   constructor(private employeeService: EmployeeService, 
     private router: Router){}
 
-  addEmployeeRequest: AddEmployee = {
-    
+  addEmployeeRequest: Employee = {
+    id:'',
     name:'',
     email:'',
     phone:'',
     salary:100000,
     department:'',
-    gender:''
+  
     
   }
 
@@ -43,16 +43,16 @@ export class AddEmployeeComponent implements OnInit{
     console.log(this.addEmployeeRequest);
 
 
-    // this.employeeService.addEmployee(this.addEmployeeRequest)
-    // .subscribe({
-    //   next: (employee) => {
-    //     console.log(employee);
-    //     this.router.navigate([""]);
-    //   },
-    //   error: (response)=>{
-    //     console.log(response);
-    //   }
-    // });
+    this.employeeService.addEmployee(this.addEmployeeRequest)
+    .subscribe({
+      next: (employee) => {
+        console.log(employee);
+        this.router.navigate([""]);
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
   }
 
 }
