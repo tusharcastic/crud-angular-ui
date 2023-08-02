@@ -15,8 +15,8 @@ export class AddEmployeeComponent implements OnInit{
   constructor(private employeeService: EmployeeService, 
     private router: Router){}
 
-  addEmployeeRequest: Employee = {
-    id:'',
+  addEmployeeRequest: AddEmployee = {
+
     name:'',
     email:'',
     phone:'',
@@ -27,11 +27,11 @@ export class AddEmployeeComponent implements OnInit{
   }
 
   profileForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
-    salary: new FormControl(''),
-    department: new FormControl(''),
+    name: new FormControl(),
+    email: new FormControl(),
+    phone: new FormControl(),
+    salary: new FormControl(),
+    department: new FormControl(),
   });
 
   ngOnInit(): void {
@@ -40,19 +40,17 @@ export class AddEmployeeComponent implements OnInit{
 
   addEmployee(){    
     
-    console.log(this.addEmployeeRequest);
-
-
+    // console.log(this.profileForm.value);
+    this.addEmployeeRequest = new AddEmployee(this.profileForm.value);
     this.employeeService.addEmployee(this.addEmployeeRequest)
-    .subscribe({
-      next: (employee) => {
-        console.log(employee);
-        this.router.navigate([""]);
-      },
-      error: (response)=>{
-        console.log(response);
-      }
-    });
+    .subscribe((response) => {
+      console.log(response);
+      this.router.navigate(['']);
+
+    })
+    ;
+
+
   }
 
 }

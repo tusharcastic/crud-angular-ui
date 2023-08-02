@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { Observable } from 'rxjs';
+import { AddEmployee } from '../models/add-employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(this.uri+"api/employees");
   }
 
-  addEmployee(employee: Employee): Observable<Employee>{
-    return this.httpClient.post<Employee>(this.uri+"api/employees", employee);
+  addEmployee(employee: AddEmployee): Observable<AddEmployee>{
+    return this.httpClient.post<AddEmployee>(this.uri+"api/employees", employee);
   }
 
   editEmployee(id: string, employee: Employee): Observable<Employee>{
