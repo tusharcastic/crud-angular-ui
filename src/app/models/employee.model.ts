@@ -5,4 +5,5 @@ export interface Employee{
     phone: string;
     salary:number;
     department: string;
+    //gender: string;
 }
