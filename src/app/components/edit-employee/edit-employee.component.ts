@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -21,6 +22,8 @@ export class EditEmployeeComponent implements OnInit{
   constructor(private employeeService: EmployeeService,
      private route: ActivatedRoute,
      private router:Router){}
+
+
  ngOnInit(): void {
   console.log(this.route.paramMap);
      this.route.paramMap.subscribe({
@@ -42,8 +45,9 @@ export class EditEmployeeComponent implements OnInit{
         
         
      });
-
  }
+
+
 
 
 

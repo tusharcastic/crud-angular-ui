@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <div class="container my-5">
     <h1 class="mb-3">Add employee</h1>
     <form  (ngSubmit)="addEmployee()" [formGroup]="profileForm">
@@ -6,25 +13,41 @@
           <label for="name">Name</label>
           <!-- angular material -->
           <!-- convert template driven form to reactive form/ add validation field/ drop down /radio button->gender/checkbox-->
-          <input type="text" class="form-control" id="name" placeholder="Enter your name"  name="name" formControlName="name">          
+          <input type="text" class="form-control" id="name" placeholder="Enter your name"  name="name" formControlName="name"> 
+            <div *ngIf="getControl().name.invalid && (getControl().name.dirty || getControl().name.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid name
+            </div>
+
         </div>
         <div class="form-group my-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email" name="email">          
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email" name="email">
+            
+            <div *ngIf="getControl().email.invalid && (getControl().email.dirty || getControl().email.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid email
+            </div>        
         </div>
         <div class="form-group my-3">
             <label for="department">Department</label>
-            <input type="text" class="form-control" id="department" placeholder="Enter Department" formControlName="department" name="department">          
+            <input type="text" class="form-control" id="department" placeholder="Enter Department" formControlName="department" name="department">
+            <div *ngIf="getControl().department.invalid && (getControl().department.dirty || getControl().department.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid department
+            </div>             
         </div>
         <div class="form-group my-3">
             <label for="salary">Salary</label>
-            <input type="number" class="form-control" id="salary" placeholder="Enter Salary" formControlName="salary" name="salary">          
+            <input type="number" class="form-control" id="salary" placeholder="Enter Salary" formControlName="salary" name="salary">
+            <div *ngIf="getControl().salary.invalid && (getControl().salary.dirty || getControl().salary.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid salary
+            </div> 
         </div>
         <div class="form-group my-3">
             <label for="phone">Phone No.</label>
-            <input type="text" class="form-control" id="phone" placeholder="Enter Phone No." formControlName="phone" name="phone">          
-        </div>
-         
+            <input type="text" class="form-control" id="phone" placeholder="Enter Phone No." formControlName="phone" name="phone">
+            <div *ngIf="getControl().phone.invalid && (getControl().phone.dirty || getControl().phone.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid phone
+            </div> 
+        </div>         
         <button type="submit" class="btn btn-primary my-3">Save</button>
       </form>
 </div>
