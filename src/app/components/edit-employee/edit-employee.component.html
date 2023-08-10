@@ -1,29 +1,53 @@
 <div class="container my-5">
     <h1 class="mb-3">Edit employee</h1>
-    <form  (ngSubmit)="editEmployee()" >
+    
+    
+    <form  (ngSubmit)="editEmployee()" [formGroup]="profileFormEdit">
         <div class="form-group my-3">
             <label for="">ID</label>
-            <input type="text" class="form-control" id="id"  [(ngModel)]="editEmployeeRequest.id" name="id" readonly disabled>          
-          </div>
-        <div class="form-group my-3">
-          <label for="">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter name" [(ngModel)]="editEmployeeRequest.name" name="name">          
+            <input type="text" class="form-control" id="id" [value]="editEmployeeRequest.id" formControlName="id" readonly>          
         </div>
         <div class="form-group my-3">
-            <label for="">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter Email" [(ngModel)]="editEmployeeRequest.email" name="email">          
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name"  formControlName="name">    
+          <div *ngIf="getControl().name.invalid && (getControl().name.dirty || getControl().name.touched)" class="alert alert-danger form-danger" role="alert">                
+            please submit valid name
+          </div>    
         </div>
+        <!-- set method, get method, form builder, form group -->
+        
         <div class="form-group my-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email">            
+            <div *ngIf="getControl().email.invalid && (getControl().email.dirty || getControl().email.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid email
+            </div>       
+        </div>
+
+        <div class="form-group my-3">
+            <label for="department" >Department: </label>
+            <select id="department" class="department" formControlName="department">
+                <option *ngFor="let c of departments" >{{ c }}</option>
+            </select>
+        </div>
+
+        <!-- <div class="form-group my-3">
             <label for="">Department</label>
-            <input type="text" class="form-control" id="department" placeholder="Enter Department" [(ngModel)]="editEmployeeRequest.department" name="department">          
-        </div>
+            <input type="text" class="form-control" id="department" placeholder="Enter Department"  [(ngModel)]="editEmployeeRequest.department" name="department">          
+        </div> -->
         <div class="form-group my-3">
             <label for="">Salary</label>
-            <input type="number" class="form-control" id="salary" placeholder="Enter Salary" [(ngModel)]="editEmployeeRequest.salary" name="salary">          
+            <input type="number" class="form-control" id="salary" placeholder="Enter Salary" formControlName="salary">          
+            <div *ngIf="getControl().salary.invalid && (getControl().salary.dirty || getControl().salary.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid salary
+            </div> 
         </div>
         <div class="form-group my-3">
             <label for="">Phone No.</label>
-            <input type="text" class="form-control" id="phone" placeholder="Enter Phone No." [(ngModel)]="editEmployeeRequest.phone" name="phone">          
+            <input type="text" class="form-control" id="phone" [placeholder]="this.editEmployeeRequest.phone" formControlName="phone">          
+            <div *ngIf="getControl().phone.invalid && (getControl().phone.dirty || getControl().phone.touched)" class="alert alert-danger form-danger" role="alert">                
+                please submit valid phone
+            </div> 
         </div>    
         <button type="submit" class="btn btn-primary">Save</button>        
       </form>
