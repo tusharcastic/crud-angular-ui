@@ -69,10 +69,10 @@ export class EmployeeComponent implements OnInit{
 
   ngOnInit(): void {    
     this.employeeService.getAllEmployees()
-    .subscribe({
-      next: (response) => this.employees = response,
-      error: (response) => console.log(response)
-    });//need to check
+    .subscribe( (response) => {
+      this.employees=response;
+    }
+    );
   }
 
   navigateToEditEmployee(employee: Employee, id: string){

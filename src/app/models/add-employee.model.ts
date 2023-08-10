@@ -1,8 +1,10 @@
-export interface AddEmployee{    
-    name: string;
-    email: string;
-    phone: string;
-    salary:number;
-    department: string;
-    gender:string;
+export class AddEmployee{    
+    // public constructor(init?: Partial<AddEmployee>) {
+    //     Object.assign(this, init);
+    // }
+    public name: string | undefined;
+    public email: string | undefined;
+    public phone: string | undefined;
+    public salary:number | undefined;
+    public department: string | undefined;
 }
